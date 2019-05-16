@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_05_15_220331) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -21,8 +24,8 @@ ActiveRecord::Schema.define(version: 2019_05_15_220331) do
   create_table "items", force: :cascade do |t|
     t.string "description"
     t.text "note"
-    t.integer "location_id"
-    t.integer "category_id"
+    t.bigint "location_id"
+    t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_items_on_category_id"
@@ -31,7 +34,7 @@ ActiveRecord::Schema.define(version: 2019_05_15_220331) do
 
   create_table "locations", force: :cascade do |t|
     t.string "name"
-    t.integer "room_id"
+    t.bigint "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_locations_on_room_id"
@@ -39,7 +42,7 @@ ActiveRecord::Schema.define(version: 2019_05_15_220331) do
 
   create_table "properties", force: :cascade do |t|
     t.string "name"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_properties_on_user_id"
@@ -47,7 +50,7 @@ ActiveRecord::Schema.define(version: 2019_05_15_220331) do
 
   create_table "rooms", force: :cascade do |t|
     t.string "name"
-    t.integer "property_id"
+    t.bigint "property_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["property_id"], name: "index_rooms_on_property_id"
@@ -59,4 +62,9 @@ ActiveRecord::Schema.define(version: 2019_05_15_220331) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "items", "categories"
+  add_foreign_key "items", "locations"
+  add_foreign_key "locations", "rooms"
+  add_foreign_key "properties", "users"
+  add_foreign_key "rooms", "properties"
 end
