@@ -5,4 +5,5 @@ class UserSerializer < ActiveModel::Serializer
   has_many :rooms
   has_many :locations
   has_many :items
+  has_many :categories
 end
