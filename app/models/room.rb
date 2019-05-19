@@ -1,5 +1,5 @@
 class Room < ApplicationRecord
-  belongs_to :property, dependent: :destroy
-  has_many :locations
-  has_many :items, through: :locations
+  belongs_to :property
+  has_many :locations, dependent: :destroy
+  has_many :items, through: :locations, dependent: :destroy
 end
