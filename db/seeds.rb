@@ -13,21 +13,44 @@ Location.destroy_all
 Category.destroy_all
 Item.destroy_all
 
-category = Category.create(name: 'travel')
-category2 = Category.create(name: 'clothes')
-user = User.create(name: 'Claire Muller')
-property = Property.create(name: 'summer home', user_id: user.id)
-room = Room.create(name: 'living room', property_id: property.id)
-room3 = Room.create(name: 'garage', property_id: property.id)
-room4 = Room.create(name: 'master bedroom', property_id: property.id)
-location = Location.create(name: 'box 3', room_id: room.id)
-location3 = Location.create(name: 'memory box', room_id: room.id)
-location4 = Location.create(name: 'closet', room_id: room4.id)
-item = Item.create(description: 'passport', note: 'expired', location_id: location.id, category_id: category.id)
-item2 = Item.create(description: 'blue winter coat', note: 'needs to be mended', location_id: location3.id, category_id: category2.id)
+user1 = User.create(name: 'Claire Muller')
 
-# user2 = User.create(name: 'Kristen')
-# property2 = Property.create(name: 'winter property')
-# room2 = Room.create(name: 'kitchen', property_id: property2.id)
-# room4 = Room.create(name: 'garage', property_id: property2.id)
-# location2 = Location.create(name: 'box 1', room_id: room2.id)
+category1 = Category.create(name: 'travel')
+category2 = Category.create(name: 'clothes')
+category3 = Category.create(name: 'books')
+category4 = Category.create(name: 'mementos')
+
+property1 = Property.create(name: 'summer home', user_id: user1.id)
+
+room1 = Room.create(name: 'living room', property_id: property1.id)
+room2 = Room.create(name: 'kitchen', property_id: property1.id)
+room3 = Room.create(name: 'garage', property_id: property1.id)
+room4 = Room.create(name: 'guest room', property_id: property1.id)
+room5 = Room.create(name: 'master bedroom', property_id: property1.id)
+
+location1 = Location.create(name: 'bookshelf', room_id: room1.id)
+location2 = Location.create(name: 'memory box', room_id: room2.id)
+location3 = Location.create(name: 'box 2', room_id: room3.id)
+location4 = Location.create(name: 'closet', room_id: room4.id)
+location5 = Location.create(name: 'closet', room_id: room5.id)
+
+item1 = Item.create(description: 'passport', note: 'expired', location_id: location3.id, category_id: category1.id)
+item2 = Item.create(description: 'blue winter coat', note: 'needs to be mended', location_id: location4.id, category_id: category2.id)
+item3 = Item.create(description: 'To Kill a Mockingbird', note: '', location_id: location1.id, category_id: category3.id)
+item4 = Item.create(description: 'prints from Europe', note: 'need to frame', location_id: location2.id, category_id: category4.id)
+item5 = Item.create(description: 'leopard jacket', note: '', location_id: location5.id, category_id: category2.id)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# end

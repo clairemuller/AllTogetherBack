@@ -1,6 +1,6 @@
 class ItemSerializer < ActiveModel::Serializer
-  attributes :id, :description, :note, :location_id, :category_id
+  attributes :id, :description, :note
 
-  # belongs_to :category
-  # belongs_to :location
+  belongs_to :category
+  belongs_to :location
 end
