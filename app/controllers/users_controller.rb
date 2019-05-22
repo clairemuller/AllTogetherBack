@@ -34,6 +34,11 @@ class UsersController < ApplicationController
     render json: user.items
   end
 
+  def getRooms
+    user = User.find(params[:id])
+    render json: user.rooms
+  end
+
   def addItem
     user = User.find(params[:id])
     byebug
