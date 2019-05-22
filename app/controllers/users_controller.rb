@@ -17,8 +17,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    # byebug
-    # item = Item.find_or_create_by(description: params['description'])
   end
 
   def getEverything

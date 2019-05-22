@@ -12,5 +12,7 @@ Rails.application.routes.draw do
   post '/users/:id/items', to: 'items#create'
   post '/users/:id/rooms', to: 'users#addRoom'
 
+  patch '/users/:id/items', to: 'items#update'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
