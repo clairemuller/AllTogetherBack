@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def create
     user = User.find_or_create_by(name: params["username"])
+    property = Property.create(name: 'home', user_id: user.id)
     render json: user
   end
 
@@ -55,7 +56,15 @@ class UsersController < ApplicationController
 
   def addRoom
     user = User.find(params[:id])
-    room = Room.find_or_create_by(name: params["room"], property_id: 1)
+    property = user.properties[0]
+    room = Room.find_or_create_by(name: params["room"], property_id: property.id)
+    if params['locations']
+      locations = params['locations']
+      locations = locations.split(',')
+      locations.each do |ll|
+        Location.create(name: ll, room_id: room.id)
+      end
+    end
     render json: room
   end
 

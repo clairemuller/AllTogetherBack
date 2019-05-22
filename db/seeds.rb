@@ -13,7 +13,7 @@ Location.destroy_all
 Category.destroy_all
 Item.destroy_all
 
-user1 = User.create(name: 'Claire Muller')
+user1 = User.create(name: 'Kristen Eason')
 
 category1 = Category.create(name: 'travel')
 category2 = Category.create(name: 'clothes')
@@ -32,13 +32,12 @@ location1 = Location.create(name: 'bookshelf', room_id: room1.id)
 location2 = Location.create(name: 'memory box', room_id: room1.id)
 location3 = Location.create(name: 'box 2', room_id: room1.id)
 location4 = Location.create(name: 'closet', room_id: room4.id)
-location5 = Location.create(name: 'closet', room_id: room5.id)
 
 item1 = Item.create(description: 'passport', note: 'expired', location_id: location3.id, category_id: category1.id)
 item2 = Item.create(description: 'blue winter coat', note: 'needs to be mended', location_id: location4.id, category_id: category2.id)
 item3 = Item.create(description: 'To Kill a Mockingbird', note: '', location_id: location1.id, category_id: category3.id)
 item4 = Item.create(description: 'prints from Europe', note: 'need to frame', location_id: location2.id, category_id: category4.id)
-item5 = Item.create(description: 'leopard jacket', note: '', location_id: location5.id, category_id: category2.id)
+item5 = Item.create(description: 'leopard jacket', note: '', location_id: location4.id, category_id: category2.id)
 
 
 
