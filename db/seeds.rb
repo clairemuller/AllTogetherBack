@@ -29,8 +29,8 @@ room4 = Room.create(name: 'guest room', property_id: property1.id)
 room5 = Room.create(name: 'master bedroom', property_id: property1.id)
 
 location1 = Location.create(name: 'bookshelf', room_id: room1.id)
-location2 = Location.create(name: 'memory box', room_id: room2.id)
-location3 = Location.create(name: 'box 2', room_id: room3.id)
+location2 = Location.create(name: 'memory box', room_id: room1.id)
+location3 = Location.create(name: 'box 2', room_id: room1.id)
 location4 = Location.create(name: 'closet', room_id: room4.id)
 location5 = Location.create(name: 'closet', room_id: room5.id)
 

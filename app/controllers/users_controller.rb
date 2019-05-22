@@ -16,14 +16,28 @@ class UsersController < ApplicationController
   end
 
   def update
-    # @item = Item.find_or_create_by(description: params['description'])
+    # byebug
+    # item = Item.find_or_create_by(description: params['description'])
   end
 
   def getEverything
     user = User.find(params[:id])
+
+    roomsWithLocations = []
+    user.rooms.each do |room|
+      roomObj = {}
+      roomObj['name'] = room.name
+      roomObj['id'] = room.id
+      roomObj['locations'] = []
+      room.locations.each do |location|
+        roomObj['locations'].push(location)
+      end
+      roomsWithLocations.push(roomObj)
+    end
+
     everything = {
-      rooms: user.rooms,
-      locations: user.locations,
+      rooms: roomsWithLocations,
+      # locations: user.locations,
       categories: user.categories.uniq
     }
     render json: everything
@@ -37,12 +51,6 @@ class UsersController < ApplicationController
   def getRooms
     user = User.find(params[:id])
     render json: user.rooms
-  end
-
-  def addItem
-    user = User.find(params[:id])
-    byebug
-    # Item.create(description: params['description'], location: params['location'])
   end
 
   def addRoom
