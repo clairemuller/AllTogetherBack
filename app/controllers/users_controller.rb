@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def create
     user = User.find_or_create_by(name: params["username"])
-    property = Property.create(name: 'home', user_id: user.id)
+    property = Property.find_or_create_by(name: 'home', user_id: user.id)
     render json: user
   end
 

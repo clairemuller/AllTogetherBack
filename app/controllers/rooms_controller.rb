@@ -8,9 +8,11 @@ class RoomsController < ApplicationController
 
     rooms.each do |room|
       roomObj = {}
-      roomObj[room.name] = []
+      roomObj['id'] = room.id
+      roomObj['name'] = room.name
+      roomObj['locations'] = []
       room.locations.each do |location|
-        roomObj[room.name].push(location)
+        roomObj['locations'].push(location)
       end
       roomsWithLocations.push(roomObj)
     end

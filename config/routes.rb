@@ -5,9 +5,11 @@ Rails.application.routes.draw do
   resources :rooms
   resources :properties
   resources :users
+
   get '/users/:id/everything', to: 'users#getEverything'
   get '/users/:id/items', to: 'users#getItems'
   get '/users/:id/rooms', to: 'rooms#show'
+  get '/users/:id/categories', to: 'categories#show'
 
   post '/users/:id/items', to: 'items#create'
   post '/users/:id/rooms', to: 'users#addRoom'
