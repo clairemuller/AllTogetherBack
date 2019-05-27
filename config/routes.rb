@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   patch '/users/:id/items', to: 'items#update'
 
   delete '/users/:id/items', to: 'items#destroy'
+  delete '/users/:id/rooms', to: 'rooms#destroy'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
