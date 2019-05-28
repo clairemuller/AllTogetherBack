@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :set_user
+  before_action :set_user, except: [:destroy, :update]
 
   def show
     rooms = @user.rooms
@@ -25,6 +25,13 @@ class RoomsController < ApplicationController
   end
 
   def update
+    room = Room.find(params['roomId'])
+    room.update(name: params['editName'])
+    params['locations'].each do |loc|
+      location = Location.find_by(id: loc['id'])
+      location.update(name: loc['name'])
+    end
+    render json: room
   end
 
   private
