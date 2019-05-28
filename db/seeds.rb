@@ -20,7 +20,7 @@ Item.destroy_all
 # category3 = Category.create(name: 'books')
 # category4 = Category.create(name: 'mementos')
 #
-# property1 = Property.create(name: 'summer home', user_id: user1.id)
+# property1 = Property.create(name: 'home', user_id: user1.id)
 #
 # room1 = Room.create(name: 'living room', property_id: property1.id)
 # room2 = Room.create(name: 'kitchen', property_id: property1.id)
@@ -31,7 +31,7 @@ Item.destroy_all
 # location1 = Location.create(name: 'bookshelf', room_id: room1.id)
 # location2 = Location.create(name: 'memory box', room_id: room1.id)
 # location3 = Location.create(name: 'box 2', room_id: room1.id)
-# location4 = Location.create(name: 'closet', room_id: room4.id)
+# location4 = Location.create(name: 'closet', room_id: room5.id)
 #
 # item1 = Item.create(description: 'passport', note: 'expired', location_id: location3.id, category_id: category1.id)
 # item2 = Item.create(description: 'blue winter coat', note: 'needs to be mended', location_id: location4.id, category_id: category2.id)

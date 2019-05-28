@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :set_user, except: [:index, :create]
 
   def index
     render json: User.all
@@ -12,18 +13,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    user = User.find(params[:id])
-    render json: user
-  end
-
-  def update
+    render json: @user
   end
 
   def getEverything
-    user = User.find(params[:id])
-
     roomsWithLocations = []
-    user.rooms.each do |room|
+    @user.rooms.each do |room|
       roomObj = {}
       roomObj['name'] = room.name
       roomObj['id'] = room.id
@@ -36,25 +31,21 @@ class UsersController < ApplicationController
 
     everything = {
       rooms: roomsWithLocations,
-      # locations: user.locations,
-      categories: user.categories.uniq
+      categories: @user.categories.uniq
     }
     render json: everything
   end
 
   def getItems
-    user = User.find(params[:id])
-    render json: user.items
+    render json: @user.items
   end
 
   def getRooms
-    user = User.find(params[:id])
-    render json: user.rooms
+    render json: @user.rooms
   end
 
   def addRoom
-    user = User.find(params[:id])
-    property = user.properties[0]
+    property = @user.properties[0]
     room = Room.find_or_create_by(name: params["room"], property_id: property.id)
     if params['locations']
       locations = params['locations']
@@ -64,6 +55,12 @@ class UsersController < ApplicationController
       end
     end
     render json: room
+  end
+
+  private
+
+  def set_user
+    @user = User.find(params[:id])
   end
 
 end
