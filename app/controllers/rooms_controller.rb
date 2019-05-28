@@ -24,6 +24,9 @@ class RoomsController < ApplicationController
     render json: room
   end
 
+  def update
+  end
+
   private
 
   def set_user
