@@ -51,7 +51,7 @@ class UsersController < ApplicationController
       locations = params['locations']
       locations = locations.split(',')
       locations.each do |ll|
-        Location.create(name: ll, room_id: room.id)
+        Location.create(name: ll.strip(), room_id: room.id)
       end
     end
     render json: room

@@ -19,7 +19,7 @@ class RoomsController < ApplicationController
   end
 
   def destroy
-    room = Room.find(params['room'][:id])
+    room = Room.find(params['roomId'])
     room.destroy
     render json: room
   end
@@ -27,9 +27,20 @@ class RoomsController < ApplicationController
   def update
     room = Room.find(params['roomId'])
     room.update(name: params['editName'])
-    params['locations'].each do |loc|
-      location = Location.find_by(id: loc['id'])
-      location.update(name: loc['name'])
+    # if updating location names
+    if params['locations']
+      params['locations'].each do |loc|
+        location = Location.find_by(id: loc['id'])
+        location.update(name: loc['name'])
+      end
+    end
+    # if adding new locations
+    if params['addLocations']
+      locations = params['addLocations']
+      locations = locations.split(',')
+      locations.each do |ll|
+        Location.create(name: ll.strip(), room_id: room.id)
+      end
     end
     render json: room
   end
