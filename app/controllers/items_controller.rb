@@ -21,7 +21,6 @@ class ItemsController < ApplicationController
     property = @user.properties[0]
     room = Room.find_by(name: params['room'], property_id: property.id)
     location = Location.find_by(name: params['location'], room_id: room.id)
-
     item = Item.find(params['item'][:id])
     item.update(
       description: params['description'],

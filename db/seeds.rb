@@ -64,7 +64,6 @@ item17 = Item.create(description: 'passport', location_id: location8.id, categor
 item18 = Item.create(description: 'swimsuits', location_id: location9.id, category_id: category2.id)
 item19 = Item.create(description: 'summer tops', location_id: location9.id, category_id: category2.id)
 item20 = Item.create(description: 'secret money stash', location_id: location9.id, category_id: category5.id)
-
 item21 = Item.create(description: 'space heater', location_id: location10.id, category_id: category5.id)
 item22 = Item.create(description: 'winter sweaters', location_id: location10.id, category_id: category2.id)
 item23 = Item.create(description: 'winter boots', location_id: location10.id, category_id: category2.id)
