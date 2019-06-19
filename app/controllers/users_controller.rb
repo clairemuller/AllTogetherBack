@@ -9,6 +9,25 @@ class UsersController < ApplicationController
   def create
     user = User.find_or_create_by(name: params["username"])
     property = Property.find_or_create_by(name: 'home', user_id: user.id)
+    # if new user, create example data
+    if user.rooms.length == 0
+      category1 = Category.create(name: 'books')
+      category2 = Category.create(name: 'clothes')
+      room = Room.create(name: 'living room', property_id: property.id)
+      location1 = Location.create(name: 'bookshelf', room_id: room.id)
+      location2 = Location.create(name: 'closet', room_id: room.id)
+      item = Item.create(
+        description: 'To Kill a Mockingbird (EXAMPLE)',
+        location_id: location1.id,
+        category_id: category1.id
+      )
+      item = Item.create(
+        description: 'black coat (EXAMPLE)',
+        note: 'from J Crew',
+        location_id: location2.id,
+        category_id: category2.id
+      )
+    end
     render json: user
   end
 
